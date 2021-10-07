@@ -1,6 +1,6 @@
 {
     "name": "rc-validator",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "author": "Vladislav Vodicka",
     "license": "Apache-2.0",
     "scripts": {
@@ -24,5 +24,18 @@
         "prettier": "2.4.1",
         "typescript": "^4.4.3"
     },
-    "keywords": ["rc", "personal", "number", "rodne", "cislo", "validator", "slovak"]
+    "homepage": "https://github.com/vvodicka/rc-validator",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/vvodicka/rc-validator"
+    },
+    "keywords": [
+        "rc",
+        "personal",
+        "number",
+        "rodne",
+        "cislo",
+        "validator",
+        "slovak"
+    ]
 }
