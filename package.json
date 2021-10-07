@@ -1,9 +1,11 @@
 {
     "name": "rc-validator",
-    "version": "0.1.0",
+    "version": "0.1.2",
     "author": "Vladislav Vodicka",
+    "license": "Apache-2.0",
     "scripts": {
-        "test": "jest"
+        "test": "jest",
+        "publish": "yarn version; tsc validator.ts; npm publish"
     },
     "devDependencies": {
         "@babel/core": "^7.15.8",
