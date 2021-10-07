@@ -9059,6 +9059,11 @@ raw-body@2.4.0:
     iconv-lite "0.4.24"
     unpipe "1.0.0"
 
+rc-validator@0.1.3:
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/rc-validator/-/rc-validator-0.1.3.tgz#e599283feb24d2b6e26f74b6e77dd470fd34685e"
+  integrity sha512-LdhWsoFQNXQMpzIe4pSy67ffph0LSX3KPAUsqrjnODXOajFa0tHEIWpbomBy8EGcO6nHwBqP4afhzUBEB89/pg==
+
 react-app-polyfill@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/react-app-polyfill/-/react-app-polyfill-2.0.0.tgz#a0bea50f078b8a082970a9d853dc34b6dcc6a3cf"

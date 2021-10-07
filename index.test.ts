@@ -1,4 +1,4 @@
-import {getValidationError, isValid, SlashRule, ValidationError} from './index'
+import {getValidationError, isValid, SlashRule, ValidationError} from './validator'
 
 test("getValidationError '7008038752' must return undefiend", () => {
     expect(getValidationError('7008038752')).toBe(undefined)
