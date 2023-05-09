@@ -1,12 +1,13 @@
 import './App.css'
-import {useEffect, useState} from 'react'
+import {ChangeEvent, useEffect, useState} from 'react'
 import {getValidationError} from 'rc-validator'
+import {ValidationError} from "../../validator";
 
 const App = () => {
     const [birthNumber, setBirthNumber] = useState('')
-    const [validationError, setValidationError] = useState()
+    const [validationError, setValidationError] = useState<ValidationError | undefined>()
 
-    const handleBirthNumberChange = (event) => {
+    const handleBirthNumberChange = (event : ChangeEvent<HTMLInputElement>) => {
         setBirthNumber(event.target.value)
     }
 
