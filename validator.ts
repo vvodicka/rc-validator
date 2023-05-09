@@ -1,7 +1,7 @@
 export enum SlashRule {
-    OPTIONAL = 'OPTIONAL',
-    REQUIRED = 'REQUIRED',
-    MUST_NOT_BE_PRESENT = 'MUST_NOT_BE_PRESENT',
+    SLASH_OPTIONAL = 'SLASH_OPTIONAL',
+    SLASH_REQUIRED = 'SLASH_REQUIRED',
+    SLASH_MUST_NOT_BE_PRESENT = 'SLASH_MUST_NOT_BE_PRESENT',
 }
 
 export enum ValidationError {
@@ -20,18 +20,18 @@ export enum ValidationError {
 
 export const getValidationError = (
     value: string,
-    slashRule: SlashRule = SlashRule.OPTIONAL,
+    slashRule: SlashRule = SlashRule.SLASH_OPTIONAL,
 ): ValidationError | undefined => {
     //remove slash for convenience
     const valueWithoutSlashes = value.replace('/', '') || ''
 
     //forced slash
-    if (slashRule === SlashRule.REQUIRED && !value.includes('/')) {
+    if (slashRule === SlashRule.SLASH_REQUIRED && !value.includes('/')) {
         return ValidationError.SLASH_REQUIRED
     }
 
     //forced slash
-    if (slashRule === SlashRule.MUST_NOT_BE_PRESENT && value.includes('/')) {
+    if (slashRule === SlashRule.SLASH_MUST_NOT_BE_PRESENT && value.includes('/')) {
         return ValidationError.SLASH_MUST_NOT_BE_PRESENT
     }
 
@@ -96,6 +96,6 @@ export const getValidationError = (
     }
 }
 
-export const isValid = (value: string, slashRule: SlashRule = SlashRule.OPTIONAL): boolean => {
+export const isValid = (value: string, slashRule: SlashRule = SlashRule.SLASH_OPTIONAL): boolean => {
     return getValidationError(value, slashRule) === undefined
 }

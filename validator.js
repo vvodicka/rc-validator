@@ -3,9 +3,9 @@ exports.__esModule = true;
 exports.isValid = exports.getValidationError = exports.ValidationError = exports.SlashRule = void 0;
 var SlashRule;
 (function (SlashRule) {
-    SlashRule["OPTIONAL"] = "OPTIONAL";
-    SlashRule["REQUIRED"] = "REQUIRED";
-    SlashRule["MUST_NOT_BE_PRESENT"] = "MUST_NOT_BE_PRESENT";
+    SlashRule["SLASH_OPTIONAL"] = "SLASH_OPTIONAL";
+    SlashRule["SLASH_REQUIRED"] = "SLASH_REQUIRED";
+    SlashRule["SLASH_MUST_NOT_BE_PRESENT"] = "SLASH_MUST_NOT_BE_PRESENT";
 })(SlashRule = exports.SlashRule || (exports.SlashRule = {}));
 var ValidationError;
 (function (ValidationError) {
@@ -22,15 +22,15 @@ var ValidationError;
     ValidationError["MOD_11_CHECK_FAIL"] = "MOD_11_CHECK_FAIL";
 })(ValidationError = exports.ValidationError || (exports.ValidationError = {}));
 var getValidationError = function (value, slashRule) {
-    if (slashRule === void 0) { slashRule = SlashRule.OPTIONAL; }
+    if (slashRule === void 0) { slashRule = SlashRule.SLASH_OPTIONAL; }
     //remove slash for convenience
     var valueWithoutSlashes = value.replace('/', '') || '';
     //forced slash
-    if (slashRule === SlashRule.REQUIRED && !value.includes('/')) {
+    if (slashRule === SlashRule.SLASH_REQUIRED && !value.includes('/')) {
         return ValidationError.SLASH_REQUIRED;
     }
     //forced slash
-    if (slashRule === SlashRule.MUST_NOT_BE_PRESENT && value.includes('/')) {
+    if (slashRule === SlashRule.SLASH_MUST_NOT_BE_PRESENT && value.includes('/')) {
         return ValidationError.SLASH_MUST_NOT_BE_PRESENT;
     }
     if (value.includes('/') && value[6] !== '/') {
@@ -89,7 +89,7 @@ var getValidationError = function (value, slashRule) {
 };
 exports.getValidationError = getValidationError;
 var isValid = function (value, slashRule) {
-    if (slashRule === void 0) { slashRule = SlashRule.OPTIONAL; }
+    if (slashRule === void 0) { slashRule = SlashRule.SLASH_OPTIONAL; }
     return (0, exports.getValidationError)(value, slashRule) === undefined;
 };
 exports.isValid = isValid;

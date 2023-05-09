@@ -37,11 +37,11 @@ test("getValidationError '7008038/752' must return INVALID_SLASH_POSITION", () =
 })
 
 test("getValidationError '7008038752' must return SLASH_REQUIRED", () => {
-    expect(getValidationError('7008038752', SlashRule.REQUIRED)).toBe(ValidationError.SLASH_REQUIRED)
+    expect(getValidationError('7008038752', SlashRule.SLASH_REQUIRED)).toBe(ValidationError.SLASH_REQUIRED)
 })
 
 test("getValidationError '700803/8752' must return SLASH_MUST_NOT_BE_PRESENT", () => {
-    expect(getValidationError('700803/8752', SlashRule.MUST_NOT_BE_PRESENT)).toBe(
+    expect(getValidationError('700803/8752', SlashRule.SLASH_MUST_NOT_BE_PRESENT)).toBe(
         ValidationError.SLASH_MUST_NOT_BE_PRESENT,
     )
 })

@@ -24,14 +24,14 @@ const birthNumber = '700803/8752'
 
 const result = getValidationError(birthNumber)
 const valid = isValid(birthNumber)
-const slashPresentError = getValidationError(birthNumber, 'MUST_NOT_BE_PRESENT')
+const slashPresentError = getValidationError(birthNumber, 'SLASH_MUST_NOT_BE_PRESENT')
 
 // result === undefined
 // valid === true
 // slashPresentError === 'SLASH_MUST_NOT_BE_PRESENT'
 ```
 
-## Metods
+## Methods
 
 `isValid(value: string, slashRule: SlashRule = SlashRule.OPTIONAL): boolean`
 
@@ -47,16 +47,16 @@ const slashPresentError = getValidationError(birthNumber, 'MUST_NOT_BE_PRESENT')
 
 ### SlashRule
 
-| Value                   | Description                                    | Note    |
-| ----------------------- | ---------------------------------------------- | ------- |
-| **OPTIONAL**            | It accepts input with or without slash         | Default |
-| **REQUIRED**            | Slash is required                              |
-| **MUST_NOT_BE_PRESENT** | Slash is prohibited, only numbers are accepted |
+| Value                         | Description                                    | Note    |
+|-------------------------------|------------------------------------------------|---------|
+| **SLASH_OPTIONAL**            | It accepts input with or without slash         | Default |
+| **SLASH_REQUIRED**            | Slash is required                              |
+| **SLASH_MUST_NOT_BE_PRESENT** | Slash is prohibited, only numbers are accepted |
 
 ### ValidationError
 
 | Value                         | Description                                                                                   | Note                                                                                                |
-| ----------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+|-------------------------------|-----------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
 | **TOO_SHORT**                 | Input is shorter than 9                                                                       |                                                                                                     |
 | **TOO_LONG**                  | Input is longer than 11                                                                       |
 | **SLASH_REQUIRED**            | SlashRule === REQUIRED, but '/' is not present in input                                       |
