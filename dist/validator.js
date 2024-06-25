@@ -1,5 +1,5 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.isValid = exports.getValidationError = exports.ValidationError = exports.SlashRule = void 0;
 var SlashRule;
 (function (SlashRule) {
@@ -21,10 +21,9 @@ var ValidationError;
     ValidationError["INVALID_YEAR_10_CHARS"] = "INVALID_YEAR_10_CHARS";
     ValidationError["MOD_11_CHECK_FAIL"] = "MOD_11_CHECK_FAIL";
 })(ValidationError = exports.ValidationError || (exports.ValidationError = {}));
-var getValidationError = function (value, slashRule) {
-    if (slashRule === void 0) { slashRule = SlashRule.SLASH_OPTIONAL; }
+const getValidationError = (value, slashRule = SlashRule.SLASH_OPTIONAL) => {
     //remove slash for convenience
-    var valueWithoutSlashes = value.replace('/', '') || '';
+    const valueWithoutSlashes = value.replace('/', '') || '';
     //forced slash
     if (slashRule === SlashRule.SLASH_REQUIRED && !value.includes('/')) {
         return ValidationError.SLASH_REQUIRED;
@@ -50,36 +49,36 @@ var getValidationError = function (value, slashRule) {
         return ValidationError.TOO_LONG;
     }
     //valid month
-    var month = Number(valueWithoutSlashes.substring(2, 4));
-    var validMaleMonth = month >= 1 && month <= 12;
-    var validFemaleMonth = month >= 51 && month <= 62;
+    const month = Number(valueWithoutSlashes.substring(2, 4));
+    const validMaleMonth = month >= 1 && month <= 12;
+    const validFemaleMonth = month >= 51 && month <= 62;
     if (!validMaleMonth && !validFemaleMonth) {
         return ValidationError.INVALID_MONTH;
     }
     //valid day
-    var day = Number(valueWithoutSlashes.substring(4, 6));
+    const day = Number(valueWithoutSlashes.substring(4, 6));
     if (day < 1 || day > 31) {
         return ValidationError.INVALID_DAY;
     }
     //valid year for 9 char value
     if (valueWithoutSlashes.length === 9) {
-        var year = Number(valueWithoutSlashes.substring(0, 2));
+        const year = Number(valueWithoutSlashes.substring(0, 2));
         if (year > 53) {
             return ValidationError.INVALID_YEAR_9_CHARS;
         }
     }
     //valid year for 10 char value
     if (valueWithoutSlashes.length === 10) {
-        var moduloResult = Number(valueWithoutSlashes) % 11;
+        const moduloResult = Number(valueWithoutSlashes) % 11;
         if (moduloResult !== 0) {
-            var year = Number(valueWithoutSlashes.substring(0, 2));
+            const year = Number(valueWithoutSlashes.substring(0, 2));
             if (year < 54 || year > 85) {
                 return ValidationError.INVALID_YEAR_10_CHARS;
             }
             else {
-                var lastDigitIsZero = valueWithoutSlashes[valueWithoutSlashes.length - 1] === '0';
+                const lastDigitIsZero = valueWithoutSlashes[valueWithoutSlashes.length - 1] === '0';
                 // first 9 digits substring modulo 11 check
-                var first9DigitsModuloResult = Number(valueWithoutSlashes.substring(0, 9)) % 11;
+                const first9DigitsModuloResult = Number(valueWithoutSlashes.substring(0, 9)) % 11;
                 if (!lastDigitIsZero || first9DigitsModuloResult !== 10) {
                     return ValidationError.MOD_11_CHECK_FAIL;
                 }
@@ -88,8 +87,7 @@ var getValidationError = function (value, slashRule) {
     }
 };
 exports.getValidationError = getValidationError;
-var isValid = function (value, slashRule) {
-    if (slashRule === void 0) { slashRule = SlashRule.SLASH_OPTIONAL; }
+const isValid = (value, slashRule = SlashRule.SLASH_OPTIONAL) => {
     return (0, exports.getValidationError)(value, slashRule) === undefined;
 };
 exports.isValid = isValid;

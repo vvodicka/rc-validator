@@ -1,13 +1,13 @@
 {
     "name": "rc-validator",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "author": "Vladislav Vodicka",
     "license": "Apache-2.0",
-    "main": "dist/index.js",
-    "types": "dist/index.d.ts",
+    "main": "dist/validator.js",
+    "types": "dist/validator.d.ts",
     "scripts": {
         "test": "jest",
-        "publish": "yarn test; yarn version; tsc validator.ts; npm publish"
+        "publish": "yarn test; yarn version; tsc; npm publish"
     },
     "devDependencies": {
         "@babel/core": "7.18.6",
